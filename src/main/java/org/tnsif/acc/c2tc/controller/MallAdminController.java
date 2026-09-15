@@ -31,12 +31,12 @@ public class MallAdminController {
 	}
 	
 	@GetMapping("/getAdmin/{id}")
-	public MallAdmin getAdmin(@PathVariable int id) {
+	public MallAdmin getAdmin(@PathVariable("id") int id) {
 		return service.searchAdmin(id);
 	}
 	
-	@DeleteMapping("/deleteAdmin")
-	public MallAdmin deleteAdmin(@PathVariable int id) {
+	@DeleteMapping("/deleteAdmin/{id}")
+	public MallAdmin deleteAdmin(@PathVariable("id") int id) {
 		return service.deleteAdmin(id);
 	}
 }

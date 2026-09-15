@@ -27,13 +27,15 @@ public class MallAdminService {
 	
 	// search
 	public MallAdmin searchAdmin(int id) {
-		return repo.findById(id).get();
+		return repo.findById(id).orElse(null);
 	}
 	
 	// delete
 	public MallAdmin deleteAdmin(int id) {
-		MallAdmin temp = repo.getReferenceById(id);
-		repo.deleteById(id);
+		MallAdmin temp = repo.findById(id).orElse(null);
+		if(temp != null) {
+			repo.deleteById(id);
+		}
 		return temp;
 	}
 }
